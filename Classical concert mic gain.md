@@ -2,7 +2,7 @@
 That's HUGE.
 The oft-quoted dynamic range of a 24&nbsp;bit digital signal is much greater than a normal orchestral concert.
 So why do mic inputs still need adjustable gain?
-Can't you just do the gain digitally after the recorder, leaving as much headroom as possible for overzealous percussionists etc.?
+In this 'digital' age can't you just do the gain digitally after the recorder, leaving as much headroom as possible for overzealous percussionists etc.?
 
 That's what I found myself wondering while setting up for an orchestral recording recently.
 
@@ -40,6 +40,8 @@ Time to crack open a spreadsheet and convert these all into consistent units.
 
 ---
 
+### Unit Rationalisation
+
 To keep things simple, I'm going to convert everything to dB relative to SI units,
 with the additional dBFS (relative to Full Scale sine wave) for the digital domain.
 A purer approach would be to convert everything to SI units themselves,
@@ -58,7 +60,7 @@ Hope that's cleared up the 3dB v 6dB for a doubling debate.
 The conversions for different reference levels can be made either in the linear values by multiplying or in dB by adding the following conversion factors:
 
 | From |  To  |linear | dB        |
-|------|------|-------|----------.|
+|------|------|-------|-----------|
 |dB SPL|dB(Pa)|0.00002|&minus;94  |
 |mV    |dB(V) |0.001  |&minus;60  |
 |dBu   |dB(V) |0.775  |&minus; 2.2|
@@ -66,22 +68,24 @@ The conversions for different reference levels can be made either in the linear 
 So now we can restate the specs in the more consistent units.
 
 
->|Microphone           |4006ER                 |CMM 4                    |CMM 21                   |
->|-------------------- |-----------------------|-------------------------|-------------------------|
->|sensitivity          |&minus;28&nbsp;dB(V/Pa)|&minus;37.7&nbsp;dB(V/Pa)|&minus;37.7&nbsp;dB(V/Pa)|
->|self noise, A-wgt    |&minus;79&nbsp;dB(Pa)  |&minus;79&nbsp;dB(Pa)    |&minus;80&nbsp;dB(Pa)    |
->|clipping level, A-wgt|      +38&nbsp;dB(Pa)  |      +38&nbsp;dB(Pa)    |      +38&nbsp;dB(Pa)    |
+|Microphone           |4006ER                 |CMM 4                    |CMM 21                   |
+|-------------------- |-----------------------|-------------------------|-------------------------|
+|sensitivity          |&minus;28&nbsp;dB(V/Pa)|&minus;37.7&nbsp;dB(V/Pa)|&minus;37.7&nbsp;dB(V/Pa)|
+|self noise, A-wgt    |&minus;79&nbsp;dB(Pa)  |&minus;79&nbsp;dB(Pa)    |&minus;80&nbsp;dB(Pa)    |
+|clipping level, A-wgt|      +38&nbsp;dB(Pa)  |      +38&nbsp;dB(Pa)    |      +38&nbsp;dB(Pa)    |
 
 and for the HAPI ADA8:
 
->|                              |                         |
->|------------------------------|------------------------:|
->|sensitivity*, (at 0dB gain)   |&minus;10.8&nbsp;dB(FS/V)|
->|Output noise, (0dB gain) A-wgt|&minus;119.5&nbsp;dB(FS) |
->|EIN, (high gain) A-wgt        |< &minus;130.2&nbsp;dB(V)|
->*ignoring pad<br/>
+|                              |                         |
+|------------------------------|------------------------:|
+|sensitivity*, (at 0dB gain)   |&minus;10.8&nbsp;dB(FS/V)|
+|Output noise, (0dB gain) A-wgt|&minus;119.5&nbsp;dB(FS) |
+|EIN, (high gain) A-wgt        |< &minus;130.2&nbsp;dB(V)|
+*ignoring pad<br/>
 
 ---
+
+### Clipping Level Alignment
 
 Now we have the specs in SI-dB units, we can work out the sensitivity of the system from pressure through to digital by adding the gains: &minus;38.8&nbsp;dB(FS/Pa) for the DPA at 0dB gain, and &minus;48.5&nbsp;dB(FS/Pa) for the Schoeps.
 
@@ -106,7 +110,7 @@ Next we must look into the noise floors, and how the different noise sources con
 
 ---
 
-### handling noise levels/sources
+### Noise Levels
 
 The immediate naive view at the start is that as the dynamic range of the HAPI is greater than the microphones, it must "fit" in.
 
